@@ -94,6 +94,36 @@ public class Guerreiro {
             } 
         }
     }
+    while (this.energia > 0 && oponente.energia > 0) {
+            // Turno do guerreiro 1
+            if (this.atacar() == 1) {
+                oponente.decremento();
+                System.out.println(this.nome + " atacou com sucesso! " + oponente.nome + " perdeu energia.");
+            } else {
+                System.out.println(this.nome + " errou o ataque!");
+            }
+
+            // Verifica se o oponente ainda pode lutar
+            if (oponente.energia == 0) break;
+
+            // Turno do guerreiro 2
+            if (oponente.atacar() == 1) {
+                this.decremento();
+                System.out.println(oponente.nome + " atacou com sucesso! " + this.nome + " perdeu energia.");
+            } else {
+                System.out.println(oponente.nome + " errou o ataque!");
+            }
+        }
+
+        // Resultado
+        if (this.energia == 0 && oponente.energia == 0) {
+            System.out.println("\nEmpate! Ambos ficaram sem energia!");
+        } else if (this.energia == 0) {
+            System.out.println("\n🏆 " + oponente.nome + " venceu a luta!");
+        } else {
+            System.out.println("\n🏆 " + this.nome + " venceu a luta!");
+        }
+    }
 
 
 
